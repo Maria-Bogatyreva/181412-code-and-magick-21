@@ -42,5 +42,17 @@ var getWizard = function(wizard) {
   return wizardElement;
 };
 
+//Добавление карточки волшебника в список
+var addWizard = function () {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < 4; i++) {
+    fragment.appendChild(getWizard(wizards[i]));
+  }
+similarListElement.appendChild(fragment);
+}
+
+addWizard();
+
+
 
 
