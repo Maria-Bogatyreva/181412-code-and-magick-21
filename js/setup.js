@@ -10,6 +10,11 @@ var coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 const amountWizards = 4;
 
+//Функция для получения случайного элемента
+var getRandomElement = function (elements) {
+  return elements[Math.floor(Math.random() * elements.length)];
+}
+
 //Генерируем массив объектов волшебников
 var generateWizards = function (amount) {
 
@@ -17,9 +22,9 @@ var generateWizards = function (amount) {
 
   for (var i = 0; i < amount; i++ ) {
     wizardsList[i] = {
-      name: names[Math.floor(Math.random() * names.length)] + ' ' + surnames[Math.floor(Math.random() * surnames.length)],
-      coatColor: coatColors[Math.floor(Math.random() * coatColors.length)],
-      eyesColor: eyesColors[Math.floor(Math.random() * eyesColors.length)]
+      name: getRandomElement(names) + ' ' + getRandomElement(surnames),
+      coatColor: getRandomElement(coatColors),
+      eyesColor: getRandomElement(eyesColors)
     }
   }
   return wizardsList;
