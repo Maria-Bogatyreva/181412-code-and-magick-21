@@ -1,6 +1,6 @@
 'use strict';
 var userDialog = document.querySelector('.setup'); //Окно настроек пользователя
-userDialog.classList.remove('hidden');
+//userDialog.classList.remove('hidden');
 
 document.querySelector('.setup-similar').classList.remove('hidden'); //Блок "Похожие персонажи"
 
