@@ -2,6 +2,8 @@
 var userDialog = document.querySelector('.setup'); //Окно настроек пользователя
 //userDialog.classList.remove('hidden');
 
+//Код "Похожие персонажи"
+
 document.querySelector('.setup-similar').classList.remove('hidden'); //Блок "Похожие персонажи"
 
 var names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
@@ -59,6 +61,63 @@ similarListElement.appendChild(fragment);
 }
 
 addWizards();
+
+//ОБРАБОТКА СОБЫТИЙ
+const setupOpen = document.querySelector('.setup-open');
+const setupClose = userDialog.querySelector('.setup-close');
+const inputName = userDialog.querySelector('.setup-user-name');
+
+const onPopupEscPress = function (evt) {
+  if (evt.key === "Escape") {
+      evt.preventDefault();
+      closePopup();
+  }
+};
+const onSetupOpenEnterPress = function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+};
+
+const openPopup = function () {
+  userDialog.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+  setupClose.addEventListener('keydown', onSetupOpenEnterPress);
+
+};
+
+const closePopup = function () {
+  userDialog.classList.add('hidden');
+
+  document.removeEventListener('keydown', onPopupEscPress)
+  setupClose.removeEventListener('keydown', onSetupOpenEnterPress);
+};
+
+
+//Открытие по клику на аватарке
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+//Открытие по Enter на аватарке
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+//Закрытие по клику крестике
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+inputName.addEventListener ('keydown', function (evt) {
+  if (evt.key === "Escape") {
+    evt.stopPropagation();
+  }
+});
+
+
 
 
 
