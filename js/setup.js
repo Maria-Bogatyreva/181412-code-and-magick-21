@@ -5,36 +5,36 @@ const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вал
 const coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 
-//Функция для показа окна
-const showUserDialog = function() {
-  const userDialog = document.querySelector('.setup'); //Окно настроек пользователя
+//  Функция для показа окна
+const showUserDialog = function () {
+  const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
   userDialog.classList.remove('hidden');
 
-  document.querySelector('.setup-similar').classList.remove('hidden'); //Блок "Похожие персонажи"
-}
+  document.querySelector('.setup-similar').classList.remove('hidden'); // Блок "Похожие персонажи"
+};
 
-//Функция для получения случайного элемента
+//  Функция для получения случайного элемента
 const getRandomElement = function (elements) {
   return elements[Math.floor(Math.random() * elements.length)];
-}
+};
 
-//Генерируем массив объектов волшебников
+//  Генерируем массив объектов волшебников
 const generateWizards = function (amount) {
 
   const wizardsList = [];
 
-  for (let i = 0; i < amount; i++ ) {
+  for (let i = 0; i < amount; i++) {
     wizardsList[i] = {
       name: getRandomElement(names) + ' ' + getRandomElement(surnames),
       coatColor: getRandomElement(coatColors),
       eyesColor: getRandomElement(eyesColors)
-    }
+    };
   }
   return wizardsList;
 };
 
-//Клонирование волшебника
-const getWizard = function(wizard) {
+//  Клонирование волшебника
+const getWizard = function (wizard) {
   const similarWizardTemplate = document.querySelector('#similar-wizard-template')
       .content
       .querySelector('.setup-similar-item');
@@ -48,7 +48,7 @@ const getWizard = function(wizard) {
   return wizardElement;
 };
 
-//Добавление карточки волшебника в список
+//  Добавление карточки волшебника в список
 const addWizards = function (wizards) {
   const similarListElement = document.querySelector('.setup-similar-list');
   const fragment = document.createDocumentFragment();
@@ -63,7 +63,3 @@ const addWizards = function (wizards) {
 const wizards = generateWizards(AMOUNT_WIZARDS); // Создаем массив волшебников
 showUserDialog(); // Показываем окно
 addWizards(wizards); // Добавляем карточки волшебников
-
-
-
-
