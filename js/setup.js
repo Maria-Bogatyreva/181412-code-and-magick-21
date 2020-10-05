@@ -33,8 +33,6 @@ const generateWizards = function (amount) {
   return wizardsList;
 };
 
-const wizards = generateWizards(amountWizards);
-
 //Клонирование волшебника
 const getWizard = function(wizard) {
   const similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -51,18 +49,20 @@ const getWizard = function(wizard) {
 };
 
 //Добавление карточки волшебника в список
-const addWizards = function () {
+const addWizards = function (wizards) {
   const similarListElement = document.querySelector('.setup-similar-list');
-
   const fragment = document.createDocumentFragment();
-  for (let i = 0; i < 4; i++) {
-    fragment.appendChild(getWizard(wizards[i]));
-  }
-similarListElement.appendChild(fragment);
-}
 
-showUserDialog();
-addWizards();
+  wizards.forEach(function (element) {
+    fragment.appendChild(getWizard(element));
+  });
+
+  similarListElement.appendChild(fragment);
+};
+
+const wizards = generateWizards(AMOUNT_WIZARDS); // Создаем массив волшебников
+showUserDialog(); // Показываем окно
+addWizards(wizards); // Добавляем карточки волшебников
 
 
 
