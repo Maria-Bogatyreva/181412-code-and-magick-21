@@ -4,10 +4,9 @@ const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кри�
 const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 const coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
-
+const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
 //  Функция для показа окна
 const showUserDialog = function () {
-  const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
   userDialog.classList.remove('hidden');
   document.querySelector('.setup-similar').classList.remove('hidden'); // Блок "Похожие персонажи"
 };
@@ -59,6 +58,62 @@ const addWizards = function (wizards) {
 };
 
 const wizards = generateWizards(AMOUNT_WIZARDS); // Создаем массив волшебников
-showUserDialog(); // Показываем окно
+// showUserDialog(); // Показываем окно
 addWizards(wizards); // Добавляем карточки волшебников
+
+//9. Учебный проект: одеть Надежду
+
+const setupOpen = document.querySelector('.setup-open');
+const setupClose = userDialog.querySelector('.setup-close');
+const inputName = userDialog.querySelector('.setup-user-name');
+
+const onPopupEscPress = function (evt) {
+  if (evt.key === "Escape") {
+      evt.preventDefault();
+      closePopup();
+  }
+};
+const onSetupOpenEnterPress = function (evt) {
+  if (evt.key === 'Enter') {
+    closePopup();
+  }
+};
+
+const openPopup = function () {
+  userDialog.classList.remove('hidden');
+
+  document.addEventListener('keydown', onPopupEscPress);
+  setupClose.addEventListener('keydown', onSetupOpenEnterPress);
+
+};
+
+const closePopup = function () {
+  userDialog.classList.add('hidden');
+
+  document.removeEventListener('keydown', onPopupEscPress)
+  setupClose.removeEventListener('keydown', onSetupOpenEnterPress);
+};
+
+
+//Открытие по клику на аватарке
+setupOpen.addEventListener('click', function () {
+  openPopup();
+});
+//Открытие по Enter на аватарке
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+});
+
+//Закрытие по клику крестике
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+inputName.addEventListener ('keydown', function (evt) {
+  if (evt.key === "Escape") {
+    evt.stopPropagation();
+  }
+});
 
