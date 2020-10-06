@@ -9,7 +9,6 @@ const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 const showUserDialog = function () {
   const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
   userDialog.classList.remove('hidden');
-
   document.querySelector('.setup-similar').classList.remove('hidden'); // Блок "Похожие персонажи"
 };
 
