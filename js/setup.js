@@ -5,11 +5,13 @@ const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вал
 const coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
 const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
+/*
 //  Функция для показа окна
 const showUserDialog = function () {
   userDialog.classList.remove('hidden');
   document.querySelector('.setup-similar').classList.remove('hidden'); // Блок "Похожие персонажи"
 };
+*/
 
 //  Функция для получения случайного элемента
 const getRandomElement = function (elements) {
@@ -61,59 +63,71 @@ const wizards = generateWizards(AMOUNT_WIZARDS); // Создаем массив 
 // showUserDialog(); // Показываем окно
 addWizards(wizards); // Добавляем карточки волшебников
 
-//9. Учебный проект: одеть Надежду
+
+//  9. Учебный проект: одеть Надежду
 
 const setupOpen = document.querySelector('.setup-open');
 const setupClose = userDialog.querySelector('.setup-close');
 const inputName = userDialog.querySelector('.setup-user-name');
 
-const onPopupEscPress = function (evt) {
-  if (evt.key === "Escape") {
-      evt.preventDefault();
-      closePopup();
-  }
+// Функция для ОТКРЫТИЯ окна
+const openPopup = function () {
+  userDialog.classList.remove('hidden');
+  document.querySelector('.setup-similar').classList.remove('hidden');
+
+  setupClose.addEventListener('click', onSetupCloseClick);
+  setupClose.addEventListener('keydown', onSetupCloseEnterPress);
+
+  document.addEventListener('keydown', onPopupEscPress);
+  inputName.addEventListener('keydown', onInputNameEscPress);
+
+};
+// Функция для ЗАКРЫТИЯ окна
+const closePopup = function () {
+  userDialog.classList.add('hidden');
+
+  setupClose.removeEventListener('click', onSetupCloseClick);
+  setupClose.removeEventListener('keydown', onSetupCloseEnterPress);
+
+  document.removeEventListener('keydown', onPopupEscPress);
+  inputName.removeEventListener('keydown', onInputNameEscPress);
+};
+
+const onSetupOpenClick = function () {
+  openPopup();
 };
 const onSetupOpenEnterPress = function (evt) {
+  if (evt.key === 'Enter') {
+    openPopup();
+  }
+};
+
+
+const onPopupEscPress = function (evt) { // Обработчик: Закрытие по Esc
+  if (evt.key === "Escape") {
+    evt.preventDefault();
+    closePopup();
+  }
+};
+const onSetupCloseEnterPress = function (evt) { // Обработчик: закрытие по Enter на Х
   if (evt.key === 'Enter') {
     closePopup();
   }
 };
-
-const openPopup = function () {
-  userDialog.classList.remove('hidden');
-
-  document.addEventListener('keydown', onPopupEscPress);
-  setupClose.addEventListener('keydown', onSetupOpenEnterPress);
-
-};
-
-const closePopup = function () {
-  userDialog.classList.add('hidden');
-
-  document.removeEventListener('keydown', onPopupEscPress)
-  setupClose.removeEventListener('keydown', onSetupOpenEnterPress);
-};
-
-
-//Открытие по клику на аватарке
-setupOpen.addEventListener('click', function () {
-  openPopup();
-});
-//Открытие по Enter на аватарке
-setupOpen.addEventListener('keydown', function (evt) {
-  if (evt.key === 'Enter') {
-    openPopup();
-  }
-});
-
-//Закрытие по клику крестике
-setupClose.addEventListener('click', function () {
+const onSetupCloseClick = function () { // Обработчик: закрытие по клику на Х
   closePopup();
-});
+};
 
-inputName.addEventListener ('keydown', function (evt) {
+
+const onInputNameEscPress = function (evt) {
   if (evt.key === "Escape") {
     evt.stopPropagation();
   }
-});
+};
 
+
+//  Открытие по КЛИКУ на аватарке
+setupOpen.addEventListener('click', onSetupOpenClick);
+
+//  Открытие по Enter на аватарке
+setupOpen.addEventListener('keydown', onSetupOpenEnterPress);
