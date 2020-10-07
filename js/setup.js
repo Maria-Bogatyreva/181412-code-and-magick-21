@@ -4,6 +4,7 @@ const names = ['Иван', 'Хуан Себастьян', 'Мария', 'Кри�
 const surnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 const coatColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+const fireballColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 const userDialog = document.querySelector('.setup'); // Окно настроек пользователя
 /*
 //  Функция для показа окна
@@ -131,3 +132,40 @@ setupOpen.addEventListener('click', onSetupOpenClick);
 
 //  Открытие по Enter на аватарке
 setupOpen.addEventListener('keydown', onSetupOpenEnterPress);
+
+
+//  ВАЛИДАЦИЯ ФОРМЫ
+const onInputNameInvalid = function () {
+  if (inputName.validity.tooShort) {
+    inputName.setCustomValidity('Не менее 2х символов!');
+  } else if (inputName.validity.tooLong) {
+    inputName.setCustomValidity('Не более 25 символов!');
+  } else if (inputName.validity.valueMissing) {
+    inputName.setCustomValidity('Введи хоть что-нибудь!');
+  } else {
+    inputName.setCustomValidity('');
+  }
+};
+
+inputName.addEventListener('invalid', onInputNameInvalid);
+
+const MIN_NAME_LENGTH = 2;
+const MAX_NAME_LENGTH = 25;
+
+const onInputNameInput = function () {
+  let valueLength = inputName.value.length;
+
+  if (valueLength < MIN_NAME_LENGTH) {
+    inputName.setCustomValidity('Ещё ' + (MIN_NAME_LENGTH - valueLength) + ' симв.');
+  } else if (valueLength > MAX_NAME_LENGTH) {
+    inputName.setCustomValidity('Удалите лишние ' + (valueLength - MAX_NAME_LENGTH) + ' симв.');
+  } else {
+    inputName.setCustomValidity('');
+  }
+  inputName.reportValidity();
+};
+
+inputName.addEventListener('input', onInputNameInput);
+
+
+
