@@ -154,10 +154,10 @@ const onInputNameInput = function () {
 inputName.addEventListener('input', onInputNameInput);
 
 //  Изменение цвета элементов персонажа по нажатию
-const primerWizard = document.querySelector('.setup-wizard');
-const WizardEyes = primerWizard.querySelector('.wizard-eyes');
-const WizardCoat = primerWizard.querySelector('.wizard-coat');
-const WizardFireball = userDialog.querySelector('.setup-fireball-wrap');
+const primaryWizard = document.querySelector('.setup-wizard');
+const wizardEyes = primaryWizard.querySelector('.wizard-eyes');
+const wizardCoat = primaryWizard.querySelector('.wizard-coat');
+const wizardFireball = userDialog.querySelector('.setup-fireball-wrap');
 
 const inputEyesColor = document.querySelector('input[name="eyes-color"]');
 const inputCoatColor = document.querySelector('input[name="coat-color"]');
@@ -175,7 +175,7 @@ const onInputClick = function (element, inputItem, colors) {
   };
 };
 
-WizardEyes.addEventListener('click', onInputClick(WizardEyes, inputEyesColor, eyesColors));
-WizardCoat.addEventListener('click', onInputClick(WizardCoat, inputCoatColor, coatColors));
-WizardFireball.addEventListener('click', onInputClick(WizardFireball, inputFireballColor, fireballColors));
+wizardEyes.addEventListener('click', onInputClick(wizardEyes, inputEyesColor, eyesColors));
+wizardCoat.addEventListener('click', onInputClick(wizardCoat, inputCoatColor, coatColors));
+wizardFireball.addEventListener('click', onInputClick(wizardFireball, inputFireballColor, fireballColors));
 
