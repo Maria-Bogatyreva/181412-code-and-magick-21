@@ -165,7 +165,7 @@ const inputFireballColor = document.querySelector('input[name="fireball-color"]'
 
 const onInputClick = function (element, inputItem, colors) {
   return function () {
-    let color = getRandomElement(colors);
+    const color = getRandomElement(colors);
     if (element.tagName.toLowerCase() === 'div') {
       element.style.backgroundColor = color;
     } else {
