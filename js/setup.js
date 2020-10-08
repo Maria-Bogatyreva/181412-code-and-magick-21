@@ -135,20 +135,6 @@ setupOpen.addEventListener('keydown', onSetupOpenEnterPress);
 
 
 //  ВАЛИДАЦИЯ ФОРМЫ
-const onInputNameInvalid = function () {
-  if (inputName.validity.tooShort) {
-    inputName.setCustomValidity('Не менее 2х символов!');
-  } else if (inputName.validity.tooLong) {
-    inputName.setCustomValidity('Не более 25 символов!');
-  } else if (inputName.validity.valueMissing) {
-    inputName.setCustomValidity('Введи хоть что-нибудь!');
-  } else {
-    inputName.setCustomValidity('');
-  }
-};
-
-inputName.addEventListener('invalid', onInputNameInvalid);
-
 const MIN_NAME_LENGTH = 2;
 const MAX_NAME_LENGTH = 25;
 
