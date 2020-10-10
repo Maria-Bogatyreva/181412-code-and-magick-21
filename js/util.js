@@ -6,7 +6,8 @@
   };
 
   window.util = {
-    getRandomElement: getRandomElement  }
+    getRandomElement: getRandomElement
+  };
 
 
 })();

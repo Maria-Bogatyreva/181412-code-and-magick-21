@@ -1,8 +1,6 @@
 'use strict';
 (function () {
   // Импортируемые данные
-  const userDialog = window.constant.userDialog;
-  const inputName = window.constant.inputName;
   const generateWizards = window.data.generateWizards;
   const addWizards = window.wizard.add;
 

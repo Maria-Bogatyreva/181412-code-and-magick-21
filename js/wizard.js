@@ -28,6 +28,6 @@
 
   window.wizard = {
     add: addWizards
-  }
+  };
 
 })();

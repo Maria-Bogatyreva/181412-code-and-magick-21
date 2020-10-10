@@ -29,5 +29,5 @@
     eyesColors: eyesColors,
     fireballColors: fireballColors,
     generateWizards: generateWizards
-  }
+  };
 })();
