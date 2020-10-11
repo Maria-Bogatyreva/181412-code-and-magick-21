@@ -6,9 +6,6 @@
 
   const setupOpen = document.querySelector('.setup-open');
   const setupClose = userDialog.querySelector('.setup-close');
-  const userDialogStartY = '80px';
-  const userDialogStartX = '50%';
-
 
   // Функция для ОТКРЫТИЯ окна
   const openPopup = function () {
@@ -26,8 +23,8 @@
   const closePopup = function () {
     userDialog.classList.add('hidden');
 
-    userDialog.style.top = userDialogStartY;
-    userDialog.style.left = userDialogStartX;
+    userDialog.style.top = '';
+    userDialog.style.left = '';
 
 
     setupClose.removeEventListener('click', onSetupCloseClick);
