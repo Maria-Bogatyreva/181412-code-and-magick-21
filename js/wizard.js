@@ -1,5 +1,9 @@
 'use strict';
 (function () {
+  //  Импортируемые данные
+  const userDialog = window.constant.userDialog;
+  const save = window.backend.save;
+
   //  Клонирование волшебника
   const getWizard = function (wizard) {
     const similarWizardTemplate = document.querySelector('#similar-wizard-template')
@@ -25,6 +29,16 @@
     });
     similarListElement.appendChild(fragment);
   };
+  // Отправляем данные формы на сервер
+  const form = userDialog.querySelector('.setup-wizard-form');
+
+  form.addEventListener('submit', function (evt) {
+    save(new FormData(form), function (response) {
+      userDialog.classList.add('hidden');
+    });
+    evt.preventDefault();
+  })
+
 
   window.wizard = {
     add: addWizards
