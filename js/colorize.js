@@ -9,7 +9,6 @@
   const fireballColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
 
-
   //  Изменение цвета элементов персонажа по нажатию
   const primaryWizard = document.querySelector('.setup-wizard');
   const wizardEyes = primaryWizard.querySelector('.wizard-eyes');

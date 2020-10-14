@@ -14,7 +14,7 @@
 
     xhr.addEventListener('load', function () {
       if (xhr.status === StatusCode.OK) {
-      onLoad(xhr.response);
+        onLoad(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
@@ -30,18 +30,18 @@
 
     xhr.timeout = TIMEOUT_IN_MS;
 
-    xhr.open('POST', URL_SAVE) // хотим ОТПРАВИТЬ данные на этот URL
+    xhr.open('POST', URL_SAVE); // хотим ОТПРАВИТЬ данные на этот URL
     xhr.send(data); // Отправляем данные!
   };
 
-// Функция для ЗАГРУЗКИ данных с сервера
+  // Функция для ЗАГРУЗКИ данных с сервера
   const load = function (onLoad, onError) {
-    const xhr = new XMLHttpRequest;
+    const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
       if (xhr.status === StatusCode.OK) {
-      onLoad(xhr.response);
+        onLoad(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
       }
@@ -59,12 +59,11 @@
 
     xhr.open('GET', URL_LOAD);
     xhr.send(); // Получаем данные!
-  }
+  };
 
   window.backend = {
     save: save,
     load: load
-  }
-
+  };
 
 })();
