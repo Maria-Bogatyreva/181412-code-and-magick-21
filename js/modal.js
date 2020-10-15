@@ -20,9 +20,8 @@
 
     return wizardElement;
   };
-
-  //  Функция, если ЗАГРУЗКА данных прошла успешно (добавление списка волшебников)
-  const loadHandler = function (wizards) {
+  // Функция для добавления волшебников
+  const addWizards = function (wizards) {
     const similarListElement = document.querySelector('.setup-similar-list');
     const fragment = document.createDocumentFragment();
 
@@ -30,8 +29,11 @@
       fragment.appendChild(getWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
+  };
 
-    userDialog.querySelector('.setup-similar').classList.remove('hidden');
+  //  Функция, если ЗАГРУЗКА данных прошла успешно (добавление списка волшебников)
+  const loadHandler = function (wizards) {
+    addWizards(wizards);
   };
 
   // Функция, если что-то пошло не так (выводится сообщение об ошибке)
@@ -47,19 +49,19 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  // Функция, если ОТПРАВКА данных прошла успешно
+  // Функция, если ОТПРАВКА данных формы прошла успешно
   const saveHandler = function () {
     userDialog.classList.add('hidden');
   };
 
-  // Добавление списка похожих волшебников
+  // Добавление списка похожих волшебников с сервера
   load(loadHandler, errorHandler);
 
-  // Отправляем данные формы на сервер
+  // Отправление данных формы на сервер
   const form = userDialog.querySelector('.setup-wizard-form');
 
   form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    save(new FormData(form), saveHandler, errorHandler);
+    save(saveHandler, errorHandler, new FormData(form));
   });
 })();
