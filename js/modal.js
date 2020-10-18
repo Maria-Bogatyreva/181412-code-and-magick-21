@@ -4,27 +4,21 @@
   const userDialog = window.constant.userDialog;
   const save = window.backend.save;
   const load = window.backend.load;
-  const AMOUNT_WIZARDS = 4;
+  const createErrorMessage = window.util.createErrorMessage;
   const addWizards = window.render.add;
 
+  const AMOUNT_WIZARDS = 4;
 
+  let wizards = [];
 
-  //  Функция, если ЗАГРУЗКА данных прошла успешно (добавление списка волшебников)
-  const loadHandler = function (wizards) {
+  const loadHandler = function (data) {
+    wizards = data;
     addWizards(wizards);
   };
 
   // Функция, если что-то пошло не так (выводится сообщение об ошибке)
   const errorHandler = function (errorMessage) {
-    const node = document.createElement('div');
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
-
-    node.textContent = errorMessage;
-    document.body.insertAdjacentElement('afterbegin', node);
+    createErrorMessage(errorMessage);
   };
 
   // Функция, если ОТПРАВКА данных формы прошла успешно
