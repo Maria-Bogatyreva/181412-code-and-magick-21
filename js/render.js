@@ -23,6 +23,8 @@
     const similarListElement = document.querySelector('.setup-similar-list');
     const fragment = document.createDocumentFragment();
 
+    similarListElement.innerHTML = '';
+
     for (let i = 0; i < AMOUNT_WIZARDS; i++) {
       fragment.appendChild(getWizard(wizards[i]));
     }

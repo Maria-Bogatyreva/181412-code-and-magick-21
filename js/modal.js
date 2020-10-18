@@ -13,7 +13,13 @@
   const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
   const fireballColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
+  let coatColor;
+  let eyesColor;
   let wizards = [];
+
+  const updateWizards = function () {
+    addWizards(wizards);
+  }
 
   const primaryWizard = document.querySelector('.setup-wizard');
 
@@ -21,18 +27,22 @@
   const wizardCoat = primaryWizard.querySelector('.wizard-coat');
   const inputCoatColor = document.querySelector('input[name="coat-color"]');
   wizardCoat.addEventListener('click', function () {
-    const color = getRandomElement(coatColors);
-    wizardCoat.style.fill = color;
-    inputCoatColor.value = color;
+    const newColor = getRandomElement(coatColors);
+    wizardCoat.style.fill = newColor;
+    inputCoatColor.value = newColor;
+    coatColor = newColor;
+    updateWizards();
   });
 
   // Изменение цвета глаз по клику
   const wizardEyes = primaryWizard.querySelector('.wizard-eyes');
   const inputEyesColor = document.querySelector('input[name="eyes-color"]');
   wizardEyes.addEventListener('click', function () {
-    const color = getRandomElement(eyesColors);
-    wizardEyes.style.fill = color;
-    inputEyesColor.value = color;
+    const newColor = getRandomElement(eyesColors);
+    wizardEyes.style.fill = newColor;
+    inputEyesColor.value = newColor;
+    eyesColor = newColor;
+    updateWizards();
   });
 
   // Изменение цвета фаербола по клику
@@ -47,7 +57,7 @@
 
   const loadHandler = function (data) {
     wizards = data;
-    addWizards(wizards);
+    updateWizards();
   };
 
   // Функция, если что-то пошло не так (выводится сообщение об ошибке)
