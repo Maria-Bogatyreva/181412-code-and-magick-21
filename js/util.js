@@ -13,10 +13,10 @@
     node.style.right = 0;
     node.style.fontSize = '30px';
 
-    node.textContent = errorMessage;
+    node.textContent = message;
     document.body.insertAdjacentElement('afterbegin', node);
 
-  }
+  };
 
   window.util = {
     getRandomElement: getRandomElement,

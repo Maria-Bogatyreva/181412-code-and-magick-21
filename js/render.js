@@ -1,10 +1,9 @@
 'use strict';
 (function () {
-  const userDialog = window.constant.userDialog;
   const AMOUNT_WIZARDS = 4;
 
-  const wizardTemplate = document.querySelector('#similar-wizard-template')
-//  Клонирование карточки волшебника
+  const wizardTemplate = document.querySelector('#similar-wizard-template');
+  //  Клонирование карточки волшебника
   const getWizard = function (wizard) {
     const element = wizardTemplate.content.cloneNode(true);
 
@@ -18,7 +17,7 @@
     return element;
   };
 
-    // Функция для добавления волшебников
+  // Функция для добавления волшебников
   const addWizards = function (wizards) {
     const similarListElement = document.querySelector('.setup-similar-list');
     const fragment = document.createDocumentFragment();
@@ -36,9 +35,8 @@
     similarListElement.appendChild(fragment);
   };
 
-window.render = {
-  add: addWizards
-}
-
+  window.render = {
+    add: addWizards
+  };
 
 })();

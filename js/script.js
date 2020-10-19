@@ -6,12 +6,9 @@
   const load = window.backend.load;
   const createErrorMessage = window.util.createErrorMessage;
   const addWizards = window.render.add;
-  const getRandomElement = window.util.getRandomElement;
 
-
-  //const AMOUNT_WIZARDS = 4;
   let coatColor = 'rgb(101, 137, 164)';
-  let eyesColor ='black';
+  let eyesColor = 'black';
   let wizards = [];
 
   // Функция для расчета степени похожести волшебника
@@ -26,17 +23,17 @@
     }
 
     return rank;
-  }
+  };
 
   const namesComparator = function (left, right) {
     if (left > right) {
       return 1;
-    } else if (lfet < right) {
+    } else if (left < right) {
       return -1;
     } else {
       return 0;
     }
-  }
+  };
 
   const updateWizards = function () {
     addWizards(wizards.sort(function (left, right) {

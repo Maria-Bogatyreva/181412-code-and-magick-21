@@ -12,7 +12,7 @@
   let wizard = {
     onEyesChange: function (color) {},
     onCoatChange: function (color) {}
-  }
+  };
 
   const primaryWizard = document.querySelector('.setup-wizard');
 
@@ -53,5 +53,5 @@
     setEyesChangeHandler: function (cb) {
       wizard.onEyesChange = cb;
     }
-  }
+  };
 })();
