@@ -6,6 +6,7 @@
   const load = window.backend.load;
   const createErrorMessage = window.util.createErrorMessage;
   const addWizards = window.render.add;
+  const debounce = window.debounce.debounce;
 
   let coatColor = 'rgb(101, 137, 164)';
   let eyesColor = 'black';
@@ -47,12 +48,12 @@
 
   window.wizard.setEyesChangeHandler(function (color) {
     eyesColor = color;
-    updateWizards();
+    debounce(updateWizards);
   });
 
   window.wizard.setCoatChangeHandler(function (color) {
     coatColor = color;
-    updateWizards();
+    debounce(updateWizards);
   });
 
 
