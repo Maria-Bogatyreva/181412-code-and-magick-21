@@ -13,12 +13,35 @@
   const eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
   const fireballColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 
-  let coatColor;
-  let eyesColor;
+  let coatColor = 'rgb(101, 137, 164)';
+  let eyesColor ='black';
   let wizards = [];
 
   const updateWizards = function () {
-    addWizards(wizards);
+    // Волшебники с тем же цветом мантии и глаз
+    const sameCoatAndEyesWizards = wizards.filter(function(wizard) {
+      return wizard.colorCoat === coatColor && wizard.colorEyes === eyesColor;
+    });
+    // Волшебники с тем же цветом мантии
+    const sameCoatWizards = wizards.filter(function(wizard) {
+      return wizard.colorCoat === coatColor;
+    });
+    // Волшебники с тем же цветом глаз
+    const sameEyesWizards = wizards.filter(function(wizard) {
+      return wizard.colorEyes === eyesColor;
+    });
+
+    // Отфильтрованные волшебники: сначала по цвету мантии и глаз, потом по цвету мантии, потом по цвету глаз, потом все остальные
+    let filteredWizards = sameCoatAndEyesWizards;
+    filteredWizards = filteredWizards.concat(sameCoatWizards);
+    filteredWizards = filteredWizards.concat(sameEyesWizards);
+    filteredWizards = filteredWizards.concat(wizards);
+
+    // Отфильтрованные волшебники, без повторений
+    const uniqueWizards = filteredWizards.filter(function(wizard, index) {
+      return filteredWizards.indexOf(wizard) === index;
+    })
+    addWizards(uniqueWizards);
   }
 
   const primaryWizard = document.querySelector('.setup-wizard');
