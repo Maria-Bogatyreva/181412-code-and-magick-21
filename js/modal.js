@@ -31,13 +31,25 @@
     return rank;
   }
 
-  const updateWizards = function () {
-    const filteredWizards = wizards.sort(function(left,right) {
-      return getRank(right) - getRank(left);
-    });
+  const namesComparator = function (left, right) {
+    if (left > right) {
+      return 1;
+    } else if (lfet < right) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
 
-    addWizards(filteredWizards);
-  }ж
+  const updateWizards = function () {
+    addWizards(wizards.sort(function (left, right) {
+      let rankDiff = getRank(right) - getRank(left);
+      if (rankDiff === 0) {
+        rankDiff = namesComparator(left.name, right, name);
+      }
+      return rankDiff;
+    }));
+  };
 
   const primaryWizard = document.querySelector('.setup-wizard');
 
