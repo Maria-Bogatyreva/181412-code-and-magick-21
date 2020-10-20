@@ -22,17 +22,15 @@
     const similarListElement = document.querySelector('.setup-similar-list');
     const fragment = document.createDocumentFragment();
 
-    const takeNumber = wizards.length > AMOUNT_WIZARDS
-      ? AMOUNT_WIZARDS
-      : wizards.length;
-
-
     similarListElement.innerHTML = '';
 
-    for (let i = 0; i < takeNumber; i++) {
-      fragment.appendChild(getWizard(wizards[i]));
-    }
+    const slicedWizards = wizards.slice(0, 4);
+
+    slicedWizards.forEach(function (element) {
+      fragment.appendChild(getWizard(element));
+    });
     similarListElement.appendChild(fragment);
+
   };
 
   window.render = {
