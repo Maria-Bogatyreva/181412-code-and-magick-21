@@ -24,9 +24,7 @@
 
     similarListElement.innerHTML = '';
 
-    const slicedWizards = wizards.slice(0, 4);
-
-    slicedWizards.forEach(function (element) {
+    wizards.slice(0, AMOUNT_WIZARDS).forEach(function (element) {
       fragment.appendChild(getWizard(element));
     });
     similarListElement.appendChild(fragment);
