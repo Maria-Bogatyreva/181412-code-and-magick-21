@@ -11,7 +11,7 @@ module.exports = {
 		"./js/debounce.js",
 		"./js/script.js",
 		"./js/validate.js",
-		"./js/ialog.js",
+		"./js/dialog.js",
 		"./js/move.js"
 	],
 	output: {
