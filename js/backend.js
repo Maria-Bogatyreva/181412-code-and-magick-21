@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   const URL_SAVE = 'https://21.javascript.pages.academy/code-and-magick';
   const URL_LOAD = 'https://21.javascript.pages.academy/code-and-magick/data';
   const TIMEOUT_IN_MS = 100000;
@@ -52,4 +52,4 @@
     load: load
   };
 
-})();
+

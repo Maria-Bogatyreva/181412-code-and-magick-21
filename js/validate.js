@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   //  Импортируемые данные
   const inputName = window.constant.inputName;
 
@@ -23,4 +23,4 @@
   inputName.addEventListener('input', onInputNameInput);
 
 
-})();
+

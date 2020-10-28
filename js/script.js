@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   //  Импортируемые данные
   const userDialog = window.constant.userDialog;
   const save = window.backend.save;
@@ -82,4 +82,4 @@
     evt.preventDefault();
     save(saveHandler, errorHandler, new FormData(form));
   });
-})();
+

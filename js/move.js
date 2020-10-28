@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   // Импортируемые данные
   const dialogHandle = window.constant.dialogHandle;
   const userDialog = window.constant.userDialog;
@@ -54,4 +54,3 @@
 
   });
 
-})();

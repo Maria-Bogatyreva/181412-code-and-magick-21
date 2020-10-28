@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+
   // Импортируемые данные
   const getRandomElement = window.util.getRandomElement;
   const userDialog = window.constant.userDialog;
@@ -54,4 +54,4 @@
       wizard.onEyesChange = cb;
     }
   };
-})();
+
