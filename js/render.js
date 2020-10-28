@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   const AMOUNT_WIZARDS = 4;
 
   const wizardTemplate = document.querySelector('#similar-wizard-template');
@@ -35,4 +35,4 @@
     add: addWizards
   };
 
-})();
+

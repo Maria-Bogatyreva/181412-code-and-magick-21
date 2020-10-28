@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+
   //  Импортируемые данные
   const inputName = window.constant.inputName;
   const userDialog = window.constant.userDialog;
@@ -70,4 +70,4 @@
 
   //  Открытие по Enter на аватарке
   setupOpen.addEventListener('keydown', onSetupOpenEnterPress);
-})();
+
