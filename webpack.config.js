@@ -4,6 +4,7 @@ module.exports = {
 	entry: [
 		"./js/game.js",
 		"./js/constant.js",
+    "./js/avatar.js",
 		"./js/util.js",
 		"./js/backend.js",
 		"./js/wizard.js",
